@@ -345,7 +345,15 @@
     justify-items: center;
     gap: 10px;
   }
+  .qr a {
+    display: block;
+    border-radius: 14px;
+    transition: transform .25s var(--ease), box-shadow .25s var(--ease);
+  }
+  .qr a:hover { transform: translateY(-2px); box-shadow: 0 16px 34px -16px rgba(216, 178, 94, 0.5); }
+  .qr a:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
   .qr img {
+    display: block;
     width: 220px;
     height: 220px;
     border-radius: 14px;
@@ -493,10 +501,14 @@
       </a>
 
       <div class="qr">
-        <picture>
-          <source srcset="instapay.webp" type="image/webp" />
-          <img src="instapay.png" alt="InstaPay QR code to pay a booking deposit for adhamfathalla.com" width="220" height="220" loading="lazy" decoding="async" />
-        </picture>
+        <a href="https://ipn.eg/S/bnsaed/instapay/0egIqK"
+           target="_blank" rel="noopener"
+           aria-label="Open InstaPay to pay a booking deposit for adhamfathalla.com">
+          <picture>
+            <source srcset="instapay.webp" type="image/webp" />
+            <img src="instapay.png" alt="InstaPay QR code to pay a booking deposit for adhamfathalla.com" width="220" height="220" loading="lazy" decoding="async" />
+          </picture>
+        </a>
         <span class="qr-cap" data-i18n="qrCap">Or scan with any banking app</span>
       </div>
     </div>
