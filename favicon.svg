@@ -1,15 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
-  <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#121118"/>
-      <stop offset="1" stop-color="#050507"/>
-    </linearGradient>
-    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#EBCB82"/>
-      <stop offset="1" stop-color="#D8B25E"/>
-    </linearGradient>
-  </defs>
-  <rect width="64" height="64" rx="15" fill="url(#bg)"/>
-  <rect x="0.75" y="0.75" width="62.5" height="62.5" rx="14.25" fill="none" stroke="#D8B25E" stroke-opacity="0.28"/>
-  <path fill="url(#gold)" d="M32 13c1.2 7.8 5.2 11.8 13 13-7.8 1.2-11.8 5.2-13 13-1.2-7.8-5.2-11.8-13-13 7.8-1.2 11.8-5.2 13-13z"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64"><defs><linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#121118"/><stop offset="1" stop-color="#050507"/></linearGradient><linearGradient id="gold" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#EBCB82"/><stop offset="1" stop-color="#D8B25E"/></linearGradient></defs><rect width="64" height="64" fill="url(#bg)" rx="15"/><rect width="62.5" height="62.5" x=".75" y=".75" fill="none" stroke="#D8B25E" stroke-opacity=".28" rx="14.25"/><path fill="url(#gold)" d="M32 13c1.2 7.8 5.2 11.8 13 13-7.8 1.2-11.8 5.2-13 13-1.2-7.8-5.2-11.8-13-13 7.8-1.2 11.8-5.2 13-13z"/></svg>
