@@ -304,7 +304,7 @@
   }
   .btn-ghost:hover { border-color: var(--accent-line); color: var(--accent-bright); background: var(--accent-soft); }
 
-  /* Booking deposit */
+  /* Booking deposit — Egypt-only; hidden until revealed by the geo check */
   .deposit {
     margin: 30px auto 0;
     max-width: 392px;
@@ -312,8 +312,19 @@
     border: 1px solid var(--border);
     border-radius: 16px;
     background: var(--surface);
-    display: grid;
+    display: none;
     gap: 18px;
+  }
+  .deposit.is-visible {
+    display: grid;
+    animation: reveal-deposit 0.5s var(--ease) both;
+  }
+  @keyframes reveal-deposit {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .deposit.is-visible { animation: none; }
   }
   .deposit-head { display: grid; gap: 6px; }
   .deposit-title {
@@ -584,6 +595,36 @@
       const next = document.documentElement.getAttribute("lang") === "ar" ? "en" : "ar";
       applyLang(next);
     });
+
+    // Reveal the InstaPay booking-deposit section only for visitors in Egypt.
+    // Strategy: instant timezone fast-path (Africa/Cairo) OR IP geolocation fallback.
+    // Safe default: on any failure, timeout, or non-Egypt result it stays hidden.
+    function showDeposit() {
+      const el = document.querySelector(".deposit");
+      if (el) el.classList.add("is-visible");
+    }
+
+    async function maybeRevealDeposit() {
+      // Fast path: an Egyptian device timezone reveals instantly, no network needed.
+      try {
+        const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || "";
+        if (tz === "Africa/Cairo") { showDeposit(); return; }
+      } catch (e) { /* timezone unavailable → fall through to IP check */ }
+
+      // Fallback: IP-based country lookup with a hard 5s timeout.
+      try {
+        const ctrl = new AbortController();
+        const timer = setTimeout(() => ctrl.abort(), 5000);
+        const res = await fetch("https://api.country.is/", { signal: ctrl.signal });
+        clearTimeout(timer);
+        if (res.ok) {
+          const data = await res.json();
+          if (data && data.country === "EG") showDeposit();
+        }
+      } catch (e) { /* network blocked, failed, or timed out → keep hidden */ }
+    }
+
+    maybeRevealDeposit();
   </script>
 </body>
 </html>
