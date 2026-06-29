@@ -8,6 +8,9 @@
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 <meta name="author" content="adhamfathalla.com" />
 <link rel="canonical" href="https://adhamfathalla.com/" />
+<link rel="alternate" hreflang="en" href="https://adhamfathalla.com/" />
+<link rel="alternate" hreflang="ar" href="https://adhamfathalla.com/" />
+<link rel="alternate" hreflang="x-default" href="https://adhamfathalla.com/" />
 
 <!-- Open Graph / social preview (WhatsApp, Facebook, LinkedIn, iMessage) -->
 <meta property="og:site_name" content="adhamfathalla.com" />
@@ -22,6 +25,7 @@
 <meta property="og:image:height" content="630" />
 <meta property="og:image:alt" content="adhamfathalla.com — premium domain for sale" />
 <meta property="og:locale" content="en_US" />
+<meta property="og:locale:alternate" content="ar_EG" />
 
 <!-- Twitter / X card -->
 <meta name="twitter:card" content="summary_large_image" />
@@ -79,6 +83,39 @@
           ]
         }
       }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://adhamfathalla.com/#faq",
+      "url": "https://adhamfathalla.com/",
+      "inLanguage": ["en", "ar"],
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is this domain actually for sale?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. adhamfathalla.com is actively listed for sale by its owner, and serious offers are welcome." }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does adhamfathalla.com cost?",
+          "acceptedAnswer": { "@type": "Answer", "text": "The price is negotiable and depends on the offer. Reach out via WhatsApp, email, or phone to discuss and make an offer." }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I buy adhamfathalla.com?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Contact the owner through WhatsApp, email, or phone to agree on a price. Once settled, the domain is transferred to you securely." }
+        },
+        {
+          "@type": "Question",
+          "name": "How does the domain transfer work?",
+          "acceptedAnswer": { "@type": "Answer", "text": "After payment, the domain is pushed to your account at your registrar of choice. The transfer is fast and secure, usually within a day." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I reserve the domain with a deposit?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes — from Egypt you can reserve the domain with an InstaPay booking deposit. The amount is credited toward the final price." }
+        }
+      ]
     }
   ]
 }
@@ -90,13 +127,11 @@
 <link rel="mask-icon" href="/favicon.svg" color="#D8B25E" />
 <link rel="manifest" href="/manifest.webmanifest" />
 
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="dns-prefetch" href="https://api.country.is" />
 <link rel="dns-prefetch" href="https://ipn.eg" />
-<!-- Load fonts without blocking render; system fonts paint instantly, web fonts swap in -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,600;1,6..96,500&family=Jost:wght@300;400;500;600&family=Tajawal:wght@300;400;500;700&display=swap" media="print" onload="this.media='all'" />
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,600;1,6..96,500&family=Jost:wght@300;400;500;600&family=Tajawal:wght@300;400;500;700&display=swap" /></noscript>
+<!-- Self-hosted fonts: no third-party requests, served & cached locally -->
+<link rel="stylesheet" href="/fonts/fonts.css" media="print" onload="this.media='all'" />
+<noscript><link rel="stylesheet" href="/fonts/fonts.css" /></noscript>
 
 <style>
   :root {
@@ -319,6 +354,54 @@
   }
   .btn-ghost:hover { border-color: var(--accent-line); color: var(--accent-bright); background: var(--accent-soft); }
 
+  /* FAQ — accordion of native <details>, matches card aesthetic */
+  .faq {
+    margin: 34px auto 0;
+    max-width: 392px;
+    display: grid;
+    gap: 10px;
+    text-align: left;
+  }
+  .faq-item {
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: var(--surface);
+    overflow: hidden;
+    transition: border-color .25s var(--ease), background .25s var(--ease);
+  }
+  .faq-item[open] { border-color: var(--accent-line); background: var(--accent-soft); }
+  .faq-item summary {
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 15px 18px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--fg);
+    transition: color .2s ease;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary:hover { color: var(--accent-bright); }
+  .faq-item summary:focus-visible { outline: 3px solid var(--accent); outline-offset: -3px; }
+  .faq-item .chev {
+    flex-shrink: 0;
+    width: 16px; height: 16px;
+    color: var(--accent-bright);
+    transition: transform .3s var(--ease);
+  }
+  .faq-item[open] .chev { transform: rotate(180deg); }
+  .faq-item .answer {
+    padding: 0 18px 4px;
+    font-size: 13.5px;
+    font-weight: 300;
+    line-height: 1.6;
+    color: var(--fg-muted);
+  }
+  .faq-item .answer a { color: var(--accent-bright); text-decoration: none; }
+
   /* Booking deposit — Egypt-only; hidden until revealed by the geo check */
   .deposit {
     margin: 30px auto 0;
@@ -516,6 +599,44 @@
       </div>
     </section>
 
+    <section class="faq" aria-label="Frequently asked questions">
+      <details class="faq-item" open>
+        <summary>
+          <span data-i18n="faqQ1">Is this domain actually for sale?</span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <p class="answer" data-i18n="faqA1">Yes. adhamfathalla.com is actively listed for sale by its owner, and serious offers are welcome.</p>
+      </details>
+      <details class="faq-item">
+        <summary>
+          <span data-i18n="faqQ2">How much does it cost?</span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <p class="answer" data-i18n="faqA2">The price is negotiable and depends on the offer. Reach out via WhatsApp, email, or phone to discuss and make an offer.</p>
+      </details>
+      <details class="faq-item">
+        <summary>
+          <span data-i18n="faqQ3">How do I buy it?</span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <p class="answer" data-i18n="faqA3">Contact the owner through WhatsApp, email, or phone to agree on a price. Once settled, the domain is transferred to you securely.</p>
+      </details>
+      <details class="faq-item">
+        <summary>
+          <span data-i18n="faqQ4">How does the transfer work?</span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <p class="answer" data-i18n="faqA4">After payment, the domain is pushed to your account at your registrar of choice. The transfer is fast and secure, usually within a day.</p>
+      </details>
+      <details class="faq-item">
+        <summary>
+          <span data-i18n="faqQ5">Can I reserve it with a deposit?</span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <p class="answer" data-i18n="faqA5">Yes — from Egypt you can reserve the domain with an InstaPay booking deposit. The amount is credited toward the final price.</p>
+      </details>
+    </section>
+
     <section class="deposit">
       <div class="deposit-head">
         <span class="deposit-title">
@@ -571,6 +692,16 @@
         depositSub: "Secure the domain by sending a booking deposit via InstaPay. The amount is credited toward the final price.",
         payCta: "Pay a Booking Deposit",
         qrCap: "Or scan with any banking app",
+        faqQ1: "Is this domain actually for sale?",
+        faqA1: "Yes. adhamfathalla.com is actively listed for sale by its owner, and serious offers are welcome.",
+        faqQ2: "How much does it cost?",
+        faqA2: "The price is negotiable and depends on the offer. Reach out via WhatsApp, email, or phone to discuss and make an offer.",
+        faqQ3: "How do I buy it?",
+        faqA3: "Contact the owner through WhatsApp, email, or phone to agree on a price. Once settled, the domain is transferred to you securely.",
+        faqQ4: "How does the transfer work?",
+        faqA4: "After payment, the domain is pushed to your account at your registrar of choice. The transfer is fast and secure, usually within a day.",
+        faqQ5: "Can I reserve it with a deposit?",
+        faqA5: "Yes — from Egypt you can reserve the domain with an InstaPay booking deposit. The amount is credited toward the final price.",
         switchLabel: "العربية",
         pageTitle: "adhamfathalla.com — Premium Domain For Sale"
       },
@@ -588,6 +719,16 @@
         depositSub: "احجز النطاق بإرسال عربون حجز عبر إنستاباي. يُخصم المبلغ من السعر النهائي.",
         payCta: "ادفع عربون الحجز",
         qrCap: "أو امسح الرمز بأي تطبيق بنكي",
+        faqQ1: "هل هذا النطاق معروض للبيع فعلاً؟",
+        faqA1: "نعم. نطاق adhamfathalla.com معروض للبيع من مالكه الحالي، ونرحب بالعروض الجادة.",
+        faqQ2: "كم تكلفته؟",
+        faqA2: "السعر قابل للتفاوض ويعتمد على العرض. تواصل عبر واتساب أو البريد الإلكتروني أو الهاتف للنقاش وتقديم عرضك.",
+        faqQ3: "كيف أشتريه؟",
+        faqA3: "تواصل مع المالك عبر واتساب أو البريد الإلكتروني أو الهاتف للاتفاق على السعر. بعد ذلك يُنقل النطاق إليك بشكل آمن.",
+        faqQ4: "كيف تتم عملية النقل؟",
+        faqA4: "بعد الدفع، يُدفّع النطاق إلى حسابك لدى جهة التسجيل التي تختارها. النقل سريع وآمن، عادةً خلال يوم واحد.",
+        faqQ5: "هل يمكنني حجزه بعربون؟",
+        faqA5: "نعم — من داخل مصر يمكنك حجز النطاق بعربون حجز عبر إنستاباي. يُخصم المبلغ من السعر النهائي.",
         switchLabel: "English",
         pageTitle: "adhamfathalla.com — نطاق مميز للبيع"
       }
