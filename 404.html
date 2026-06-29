@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>404 — Page not found · adhamfathalla.com</title>
+<meta name="description" content="The page you're looking for doesn't exist. adhamfathalla.com is a premium .com domain available for purchase." />
+<meta name="robots" content="noindex, follow" />
+<link rel="canonical" href="https://adhamfathalla.com/" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="stylesheet" href="/fonts/fonts.css" media="print" onload="this.media='all'" />
+<noscript><link rel="stylesheet" href="/fonts/fonts.css" /></noscript>
+
+<style>
+  :root {
+    --bg-deep: #050507;
+    --bg-base: #08080C;
+    --surface: rgba(255, 255, 255, 0.035);
+    --surface-2: rgba(255, 255, 255, 0.06);
+    --fg: #F4F1EA;
+    --fg-muted: #A6A097;
+    --accent: #D8B25E;
+    --accent-bright: #EBCB82;
+    --accent-soft: rgba(216, 178, 94, 0.12);
+    --accent-line: rgba(216, 178, 94, 0.28);
+    --border: rgba(255, 255, 255, 0.09);
+    --radius: 22px;
+    --maxw: 580px;
+    --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    font-family: "Jost", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: var(--fg);
+    background-color: var(--bg-deep);
+    background-image:
+      radial-gradient(900px 520px at 50% -10%, rgba(216, 178, 94, 0.14), transparent 62%),
+      radial-gradient(700px 500px at 100% 105%, rgba(216, 178, 94, 0.06), transparent 60%),
+      linear-gradient(180deg, var(--bg-base), var(--bg-deep) 70%);
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  .ambient {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .ambient span {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.5;
+    background: radial-gradient(circle, rgba(216, 178, 94, 0.42), transparent 70%);
+    animation: drift 18s var(--ease) infinite alternate;
+  }
+  .ambient .b1 { width: 380px; height: 380px; top: -120px; left: -80px; }
+  .ambient .b2 { width: 300px; height: 300px; bottom: -120px; right: -60px; animation-duration: 22s; animation-delay: -6s; opacity: 0.35; }
+  @keyframes drift {
+    from { transform: translate3d(0, 0, 0) scale(1); }
+    to   { transform: translate3d(40px, 30px, 0) scale(1.15); }
+  }
+
+  .card {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: var(--maxw);
+    background: linear-gradient(180deg, var(--surface-2), var(--surface));
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 56px 46px;
+    backdrop-filter: blur(14px) saturate(120%);
+    -webkit-backdrop-filter: blur(14px) saturate(120%);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.06),
+      0 30px 80px -30px rgba(0, 0, 0, 0.8);
+    text-align: center;
+    animation: rise 0.7s var(--ease) both;
+  }
+  .card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 24px; right: 24px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent-line), transparent);
+  }
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .code {
+    font-family: "Bodoni Moda", Georgia, serif;
+    font-weight: 600;
+    font-size: clamp(72px, 18vw, 128px);
+    line-height: 1;
+    letter-spacing: -2px;
+    color: var(--accent);
+    text-shadow: 0 0 60px rgba(216, 178, 94, 0.3);
+    margin-bottom: 8px;
+  }
+  .code .tld { color: var(--fg); font-style: italic; font-weight: 500; }
+
+  .headline {
+    font-size: clamp(17px, 3vw, 20px);
+    font-weight: 400;
+    color: var(--fg);
+    margin-bottom: 10px;
+  }
+
+  .lead {
+    color: var(--fg-muted);
+    font-size: clamp(14px, 2.4vw, 16px);
+    font-weight: 300;
+    max-width: 380px;
+    margin: 0 auto 32px;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 54px;
+    padding: 15px 28px;
+    border-radius: 14px;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+    border: 1px solid var(--accent-line);
+    background: var(--accent);
+    color: var(--bg-deep);
+    cursor: pointer;
+    transition: transform .25s var(--ease), box-shadow .25s var(--ease), background .25s ease;
+  }
+  .btn:hover {
+    transform: translateY(-2px);
+    background: var(--accent-bright);
+    box-shadow: 0 18px 38px -16px rgba(216, 178, 94, 0.55);
+  }
+  .btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+  .btn svg { width: 18px; height: 18px; }
+
+  .footer {
+    margin-top: 28px;
+    color: var(--fg-muted);
+    font-size: 13px;
+    font-weight: 300;
+  }
+  .footer a { color: var(--accent-bright); text-decoration: none; }
+
+  @media (max-width: 420px) {
+    .card { padding: 42px 24px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, .card, .ambient span { animation: none !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+  <div class="ambient" aria-hidden="true"><span class="b1"></span><span class="b2"></span></div>
+
+  <main class="card">
+    <p class="code"><span class="tld">4</span>0<span class="tld">4</span></p>
+    <h1 class="headline">This page doesn't exist</h1>
+    <p class="lead">The page you're looking for couldn't be found. But adhamfathalla.com is a premium .com domain available for purchase.</p>
+
+    <a class="btn" href="https://adhamfathalla.com/" aria-label="Go back to the adhamfathalla.com home page">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 0 0 1 1h3m10-11l2 2m-2-2v10a1 1 0 0 1-1 1h-3m-6 0a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1m-6 0h6"/></svg>
+      <span>Back to adhamfathalla.com</span>
+    </a>
+
+    <p class="footer">
+      <a href="mailto:me@adhamfathalla.com">me@adhamfathalla.com</a>
+      &nbsp;·&nbsp;
+      <a href="https://adhamfathalla.com/">adhamfathalla.com</a>
+    </p>
+  </main>
+</body>
+</html>
