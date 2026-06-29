@@ -1,4 +1,40 @@
+# All crawlers welcome, including AI assistants and search indexers
 User-agent: *
+Allow: /
+
+# Explicitly allow major AI/LLM crawlers (these are also covered by * above;
+# listing them documents intent and guards against future rule changes)
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: CCBot
 Allow: /
 
 Sitemap: https://adhamfathalla.com/sitemap.xml

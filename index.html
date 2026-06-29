@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>adhamfathalla.com — Premium Domain For Sale</title>
 <meta name="description" content="adhamfathalla.com — a premium, memorable .com domain available for purchase. Perfect for a personal brand or business. Make an offer today." />
-<meta name="keywords" content="adhamfathalla, adhamfathalla.com, domain for sale, premium domain, buy domain, .com domain" />
-<meta name="robots" content="index, follow, max-image-preview:large" />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 <meta name="author" content="adhamfathalla.com" />
 <link rel="canonical" href="https://adhamfathalla.com/" />
 
@@ -29,6 +28,9 @@
 <meta name="twitter:title" content="adhamfathalla.com — Premium Domain For Sale" />
 <meta name="twitter:description" content="A clean, memorable .com for your personal brand or business. Make an offer today." />
 <meta name="twitter:image" content="https://adhamfathalla.com/og-image.png" />
+<meta name="twitter:image:alt" content="adhamfathalla.com — premium domain for sale" />
+<meta name="twitter:site" content="@AdhamFathallaha" />
+<meta name="twitter:creator" content="@AdhamFathallaha" />
 
 <meta name="theme-color" content="#07070A" />
 <meta name="color-scheme" content="dark" />
@@ -59,13 +61,22 @@
         "@type": "Offer",
         "availability": "https://schema.org/InStock",
         "priceCurrency": "USD",
+        "areaServed": "Worldwide",
         "url": "https://adhamfathalla.com/",
         "businessFunction": "http://purl.org/goodrelations/v1#Sell",
         "seller": {
           "@type": "Organization",
           "name": "adhamfathalla.com",
+          "url": "https://adhamfathalla.com/",
+          "logo": "https://adhamfathalla.com/favicon.svg",
           "email": "me@adhamfathalla.com",
-          "telephone": "+201151034858"
+          "telephone": "+201151034858",
+          "sameAs": [
+            "https://www.instagram.com/AdhamFathallahProperty",
+            "https://www.facebook.com/AdhamFathallahProperty",
+            "https://www.youtube.com/@AdhamFathallahProperty",
+            "https://x.com/AdhamFathallaha"
+          ]
         }
       }
     }
@@ -74,11 +85,15 @@
 </script>
 
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<link rel="apple-touch-icon" href="/favicon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 <link rel="mask-icon" href="/favicon.svg" color="#D8B25E" />
+<link rel="manifest" href="/manifest.webmanifest" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="dns-prefetch" href="https://api.country.is" />
+<link rel="dns-prefetch" href="https://ipn.eg" />
 <!-- Load fonts without blocking render; system fonts paint instantly, web fonts swap in -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,600;1,6..96,500&family=Jost:wght@300;400;500;600&family=Tajawal:wght@300;400;500;700&display=swap" media="print" onload="this.media='all'" />
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,600;1,6..96,500&family=Jost:wght@300;400;500;600&family=Tajawal:wght@300;400;500;700&display=swap" /></noscript>
@@ -430,6 +445,12 @@
     .secondary-row { grid-template-columns: 1fr; }
   }
 
+  /* Visually hidden, available to screen readers & crawlers */
+  .sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     *, .card, .ambient span, .eyebrow .dot { animation: none !important; transition: none !important; }
     html { scroll-behavior: auto; }
@@ -454,6 +475,7 @@
       The name is available now. Serious inquiries welcome.
     </p>
 
+    <h2 class="sr-only">Why this domain</h2>
     <ul class="benefits">
       <li>
         <span class="check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
@@ -469,7 +491,7 @@
       </li>
     </ul>
 
-    <div class="actions">
+    <section class="actions">
       <a class="btn btn-primary"
          href="https://wa.me/201151034858?text=Hi%2C%20I'm%20interested%20in%20buying%20adhamfathalla.com"
          target="_blank" rel="noopener"
@@ -492,9 +514,9 @@
           <span data-i18n="call">Call</span>
         </a>
       </div>
-    </div>
+    </section>
 
-    <div class="deposit">
+    <section class="deposit">
       <div class="deposit-head">
         <span class="deposit-title">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
@@ -517,18 +539,18 @@
            aria-label="Open InstaPay to pay a booking deposit for adhamfathalla.com">
           <picture>
             <source srcset="instapay.webp" type="image/webp" />
-            <img src="instapay.png" alt="InstaPay QR code to pay a booking deposit for adhamfathalla.com" width="220" height="220" loading="lazy" decoding="async" />
+            <img src="instapay.webp" alt="InstaPay QR code to pay a booking deposit for adhamfathalla.com" width="220" height="220" loading="lazy" decoding="async" />
           </picture>
         </a>
         <span class="qr-cap" data-i18n="qrCap">Or scan with any banking app</span>
       </div>
-    </div>
+    </section>
 
     <hr class="divider" />
 
-    <p class="footer" dir="ltr">
+    <footer class="footer" dir="ltr">
       &copy; <span id="year"></span> adhamfathalla.com &nbsp;·&nbsp; <a href="mailto:me@adhamfathalla.com">me@adhamfathalla.com</a> &nbsp;·&nbsp; <a href="tel:+201151034858">+20 11 51034858</a>
-    </p>
+    </footer>
   </main>
 
   <script>
@@ -538,6 +560,7 @@
       en: {
         eyebrow: "Premium Domain For Sale",
         lead: "A clean, memorable .com — ideal for a personal brand, portfolio, or business. The name is available now. Serious inquiries welcome.",
+        metaDescription: "adhamfathalla.com — a premium, memorable .com domain available for purchase. Perfect for a personal brand or business. Make an offer today.",
         benefit1: "Short, brandable, easy to remember",
         benefit2: "Premium top-level <strong>.com</strong> extension",
         benefit3: "Fast, secure transfer after purchase",
@@ -554,6 +577,7 @@
       ar: {
         eyebrow: "نطاق مميز للبيع",
         lead: "نطاق .com نظيف وسهل التذكر — مثالي لعلامتك الشخصية أو معرض أعمالك أو نشاطك التجاري. الاسم متاح الآن. نرحب بالعروض الجادة.",
+        metaDescription: "adhamfathalla.com — نطاق .com مميز وسهل التذكر متاح للبيع. مثالي لعلامتك الشخصية أو نشاطك التجاري. قدّم عرضك اليوم.",
         benefit1: "قصير وسهل التذكر وقابل للعلامة التجارية",
         benefit2: "امتداد <strong>.com</strong> المميز من المستوى الأعلى",
         benefit3: "نقل سريع وآمن بعد الشراء",
@@ -583,6 +607,13 @@
       });
 
       document.title = t.pageTitle;
+      // Keep social-scraped meta consistent with the active language (client-side only).
+      const desc = t.metaDescription;
+      if (desc) {
+        document.querySelector('meta[name="description"]')?.setAttribute("content", desc);
+        document.querySelector('meta[property="og:description"]')?.setAttribute("content", desc);
+        document.querySelector('meta[name="twitter:description"]')?.setAttribute("content", desc);
+      }
       document.getElementById("langLabel").textContent = t.switchLabel;
       try { localStorage.setItem("lang", lang); } catch (e) {}
     }
