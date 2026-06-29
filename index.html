@@ -402,6 +402,91 @@
   }
   .faq-item .answer a { color: var(--accent-bright); text-decoration: none; }
 
+  /* Make-an-offer form (Web3Forms) */
+  .offer {
+    margin: 30px auto 0;
+    max-width: 392px;
+    text-align: left;
+  }
+  .offer-form {
+    display: grid;
+    gap: 12px;
+  }
+  .offer-form .field { display: grid; gap: 6px; }
+  .offer-form label {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    color: var(--fg-muted);
+  }
+  .offer-form input {
+    width: 100%;
+    min-height: 50px;
+    padding: 13px 16px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: var(--surface-2);
+    color: var(--fg);
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 400;
+    transition: border-color .2s ease, background .2s ease;
+  }
+  .offer-form input::placeholder { color: rgba(166, 160, 151, 0.55); }
+  .offer-form input:focus {
+    outline: none;
+    border-color: var(--accent);
+    background: var(--accent-soft);
+  }
+  .offer-form input:invalid:not(:placeholder-shown) { border-color: rgba(255, 120, 120, 0.5); }
+  .offer-form .amount-wrap { position: relative; }
+  .offer-form .amount-wrap .currency {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--accent-bright);
+    font-weight: 600;
+    font-size: 15px;
+    pointer-events: none;
+  }
+  html[dir="rtl"] .offer-form .amount-wrap .currency { left: auto; right: 16px; }
+  .offer-form .amount-wrap input { padding-left: 38px; }
+  html[dir="rtl"] .offer-form .amount-wrap input { padding-left: 16px; padding-right: 38px; }
+  .offer-form button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    min-height: 52px;
+    border-radius: 13px;
+    border: 1px solid var(--accent-line);
+    background: var(--accent);
+    color: var(--bg-deep);
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform .25s var(--ease), box-shadow .25s var(--ease), background .25s ease, opacity .2s ease;
+  }
+  .offer-form button:hover { transform: translateY(-2px); background: var(--accent-bright); box-shadow: 0 16px 36px -16px rgba(216, 178, 94, 0.55); }
+  .offer-form button:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+  .offer-form button:disabled { opacity: 0.6; cursor: progress; transform: none; }
+  .offer-form button svg { width: 17px; height: 17px; }
+  .offer-status {
+    font-size: 13.5px;
+    font-weight: 400;
+    text-align: center;
+    padding: 2px 0;
+    transition: opacity .2s ease;
+  }
+  .offer-status.is-success { color: var(--accent-bright); }
+  .offer-status.is-error { color: #ff9a9a; }
+  .offer-status[hidden] { display: none; }
+  /* honeypot field hidden from humans, visible to bots */
+  .offer-form .bottrap { position: absolute !important; left: -9999px !important; width: 1px; height: 1px; opacity: 0; }
+
   /* Booking deposit — Egypt-only; hidden until revealed by the geo check */
   .deposit {
     margin: 30px auto 0;
@@ -599,6 +684,32 @@
       </div>
     </section>
 
+    <section class="offer" aria-label="Make an offer">
+      <form class="offer-form" id="offerForm" novalidate>
+        <!-- Web3Forms access key — submissions are forwarded to me@adhamfathalla.com -->
+        <input type="hidden" name="access_key" value="17a41257-fb8a-4e7e-8dc0-169245eebe17" />
+        <input type="hidden" name="subject" value="New offer for adhamfathalla.com" />
+        <input type="hidden" name="from_name" value="adhamfathalla.com" />
+        <input type="checkbox" name="botcheck" class="bottrap" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        <div class="field">
+          <label for="offerEmail" data-i18n="offerEmailLabel">Your email</label>
+          <input type="email" id="offerEmail" name="email" placeholder="you@example.com" required autocomplete="email" inputmode="email" />
+        </div>
+        <div class="field">
+          <label for="offerAmount" data-i18n="offerAmountLabel">Your offer (USD)</label>
+          <div class="amount-wrap">
+            <span class="currency" aria-hidden="true">$</span>
+            <input type="number" id="offerAmount" name="amount" min="1" step="1" placeholder="2,500" required inputmode="numeric" />
+          </div>
+        </div>
+        <button type="submit" id="offerBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+          <span data-i18n="offerBtn">Send Offer</span>
+        </button>
+        <p class="offer-status" id="offerStatus" role="status" aria-live="polite" hidden></p>
+      </form>
+    </section>
+
     <section class="deposit">
       <div class="deposit-head">
         <span class="deposit-title">
@@ -686,6 +797,9 @@
         benefit2: "Premium top-level <strong>.com</strong> extension",
         benefit3: "Fast, secure transfer after purchase",
         ctaWhatsapp: "Make an Offer on WhatsApp",
+        offerEmailLabel: "Your email",
+        offerAmountLabel: "Your offer (USD)",
+        offerBtn: "Send Offer",
         email: "Email",
         call: "Call",
         depositTitle: "Serious? Reserve it with a deposit",
@@ -713,6 +827,9 @@
         benefit2: "امتداد <strong>.com</strong> المميز من المستوى الأعلى",
         benefit3: "نقل سريع وآمن بعد الشراء",
         ctaWhatsapp: "قدّم عرضك عبر واتساب",
+        offerEmailLabel: "بريدك الإلكتروني",
+        offerAmountLabel: "عرضك (بالدولار)",
+        offerBtn: "أرسل العرض",
         email: "البريد الإلكتروني",
         call: "اتصل",
         depositTitle: "مهتم بجدية؟ احجزه بعربون",
@@ -797,6 +914,53 @@
     }
 
     maybeRevealDeposit();
+
+    // Offer form — submit to Web3Forms via fetch (no page reload), then show a status message.
+    const offerForm = document.getElementById("offerForm");
+    if (offerForm) {
+      const statusEl = document.getElementById("offerStatus");
+      const btn = document.getElementById("offerBtn");
+      const btnLabel = btn.querySelector("span");
+      const txt = {
+        en: { sending: "Sending…", success: "✓ Offer sent — thank you! We'll be in touch.", error: "Something went wrong. Please try WhatsApp or email." },
+        ar: { sending: "جارٍ الإرسال…", success: "✓ تم إرسال العرض — شكراً لك! سنتواصل معك قريباً.", error: "حدث خطأ. يرجى المحاولة عبر واتساب أو البريد الإلكتروني." }
+      };
+      offerForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const lang = document.documentElement.getAttribute("lang") === "ar" ? "ar" : "en";
+        const t = txt[lang];
+        // honeypot: if filled, silently drop the submission (bot).
+        if (offerForm.botcheck && offerForm.botcheck.checked) return;
+        if (!offerForm.checkValidity()) { offerForm.reportValidity(); return; }
+
+        btn.disabled = true;
+        statusEl.hidden = false;
+        statusEl.textContent = t.sending;
+        statusEl.className = "offer-status";
+
+        try {
+          const res = await fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            headers: { "Content-Type": "application/json", "Accept": "application/json" },
+            body: JSON.stringify(Object.fromEntries(new FormData(offerForm)))
+          });
+          const data = await res.json();
+          if (res.ok && data.success) {
+            statusEl.textContent = t.success;
+            statusEl.className = "offer-status is-success";
+            offerForm.reset();
+          } else {
+            statusEl.textContent = t.error;
+            statusEl.className = "offer-status is-error";
+          }
+        } catch (err) {
+          statusEl.textContent = t.error;
+          statusEl.className = "offer-status is-error";
+        } finally {
+          btn.disabled = false;
+        }
+      });
+    }
   </script>
 </body>
 </html>
