@@ -440,8 +440,29 @@
     background: var(--accent-soft);
   }
   .offer-form input:invalid:not(:placeholder-shown) { border-color: rgba(255, 120, 120, 0.5); }
-  .offer-form .amount-wrap { position: relative; }
-  .offer-form .amount-wrap .currency {
+  .offer-form .amount-wrap {
+    display: flex;
+    align-items: stretch;
+    gap: 8px;
+  }
+  .offer-form .step-btn {
+    flex-shrink: 0;
+    width: 54px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: var(--surface-2);
+    color: var(--accent-bright);
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: border-color .2s ease, background .2s ease, transform .15s var(--ease);
+  }
+  .offer-form .step-btn:hover { border-color: var(--accent-line); background: var(--accent-soft); }
+  .offer-form .step-btn:active { transform: scale(0.93); }
+  .offer-form .step-btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+  .offer-form .amount-input-box { position: relative; flex: 1; }
+  .offer-form .amount-input-box .currency {
     position: absolute;
     left: 16px;
     top: 50%;
@@ -451,9 +472,13 @@
     font-size: 15px;
     pointer-events: none;
   }
-  html[dir="rtl"] .offer-form .amount-wrap .currency { left: auto; right: 16px; }
-  .offer-form .amount-wrap input { padding-left: 38px; }
-  html[dir="rtl"] .offer-form .amount-wrap input { padding-left: 16px; padding-right: 38px; }
+  html[dir="rtl"] .offer-form .amount-input-box .currency { left: auto; right: 16px; }
+  .offer-form .amount-input-box input { padding-left: 34px; text-align: center; }
+  html[dir="rtl"] .offer-form .amount-input-box input { padding-left: 16px; padding-right: 34px; }
+  /* hide native number spinners — we have our own steppers */
+  .offer-form input[type="number"]::-webkit-outer-spin-button,
+  .offer-form input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+  .offer-form input[type="number"] { -moz-appearance: textfield; appearance: textfield; }
   .offer-form button {
     display: flex;
     align-items: center;
@@ -698,8 +723,12 @@
         <div class="field">
           <label for="offerAmount" data-i18n="offerAmountLabel">Your offer (USD)</label>
           <div class="amount-wrap">
-            <span class="currency" aria-hidden="true">$</span>
-            <input type="number" id="offerAmount" name="amount" min="1" step="1" placeholder="2,500" required inputmode="numeric" />
+            <button type="button" class="step-btn" data-step="-10" aria-label="Decrease offer by 10">−10</button>
+            <div class="amount-input-box">
+              <span class="currency" aria-hidden="true">$</span>
+              <input type="number" id="offerAmount" name="amount" min="10" step="10" placeholder="100" required inputmode="numeric" />
+            </div>
+            <button type="button" class="step-btn" data-step="10" aria-label="Increase offer by 10">+10</button>
           </div>
         </div>
         <button type="submit" id="offerBtn">
@@ -918,6 +947,16 @@
     // Offer form — submit to Web3Forms via fetch (no page reload), then show a status message.
     const offerForm = document.getElementById("offerForm");
     if (offerForm) {
+      // +/-10 stepper buttons adjust the amount, clamped to a minimum of 1.
+      const amountInput = document.getElementById("offerAmount");
+      offerForm.querySelectorAll(".step-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const delta = parseInt(btn.dataset.step, 10) || 0;
+          const current = parseInt(amountInput.value, 10) || 0;
+          amountInput.value = Math.max(10, current + delta);
+        });
+      });
+
       const statusEl = document.getElementById("offerStatus");
       const btn = document.getElementById("offerBtn");
       const btnLabel = btn.querySelector("span");
