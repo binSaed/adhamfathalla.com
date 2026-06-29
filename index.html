@@ -57,7 +57,7 @@
       "@id": "https://adhamfathalla.com/#domain",
       "name": "adhamfathalla.com",
       "category": "Internet domain name",
-      "description": "adhamfathalla.com — a clean, memorable, brandable premium .com domain available for purchase. Ideal for a personal brand, portfolio, or business.",
+      "description": "adhamfathalla.com — a clean, memorable, brandable premium .com domain available for purchase. Ideal for a personal brand, portfolio, or business. Secure transfer via Escrow.com.",
       "brand": { "@type": "Brand", "name": "adhamfathalla.com" },
       "url": "https://adhamfathalla.com/",
       "image": "https://adhamfathalla.com/og-image.png",
@@ -108,7 +108,7 @@
         {
           "@type": "Question",
           "name": "How does the domain transfer work?",
-          "acceptedAnswer": { "@type": "Answer", "text": "After payment, the domain is pushed to your account at your registrar of choice. The transfer is fast and secure, usually within a day." }
+          "acceptedAnswer": { "@type": "Answer", "text": "The transfer can be handled securely through Escrow.com for buyer protection, or as a direct push to your registrar. Either way it's fast and secure, usually within a day." }
         },
         {
           "@type": "Question",
@@ -512,6 +512,21 @@
   /* honeypot field hidden from humans, visible to bots */
   .offer-form .bottrap { position: absolute !important; left: -9999px !important; width: 1px; height: 1px; opacity: 0; }
 
+  /* Trust line — escrow reassurance under the offer form */
+  .trust {
+    margin: 14px auto 0;
+    max-width: 392px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 12.5px;
+    font-weight: 400;
+    color: var(--fg-muted);
+  }
+  .trust svg { width: 15px; height: 15px; color: var(--accent-bright); flex-shrink: 0; }
+  .trust b { color: var(--accent-bright); font-weight: 500; }
+
   /* Booking deposit — Egypt-only; hidden until revealed by the geo check */
   .deposit {
     margin: 30px auto 0;
@@ -574,7 +589,7 @@
   .qr img {
     display: block;
     width: 220px;
-    height: 220px;
+    height: auto;
     border-radius: 14px;
     background: #fff;
     padding: 12px;
@@ -688,7 +703,7 @@
       <a class="btn btn-primary"
          href="https://wa.me/201151034858?text=Hi%2C%20I'm%20interested%20in%20buying%20adhamfathalla.com"
          target="_blank" rel="noopener"
-         aria-label="Message about buying adhamfathalla.com on WhatsApp">
+         aria-label="Make an Offer on WhatsApp">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.607zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
         <span data-i18n="ctaWhatsapp">Make an Offer on WhatsApp</span>
       </a>
@@ -737,6 +752,11 @@
         </button>
         <p class="offer-status" id="offerStatus" role="status" aria-live="polite" hidden></p>
       </form>
+
+      <p class="trust">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+        <span data-i18n="trustEscrow" data-i18n-html>Secure transfer via <b>Escrow.com</b></span>
+      </p>
     </section>
 
     <section class="deposit">
@@ -762,7 +782,7 @@
            aria-label="Open InstaPay to pay a booking deposit for adhamfathalla.com">
           <picture>
             <source srcset="instapay.webp" type="image/webp" />
-            <img src="instapay.webp" alt="InstaPay QR code to pay a booking deposit for adhamfathalla.com" width="220" height="220" loading="lazy" decoding="async" />
+            <img src="instapay.webp" alt="InstaPay QR code to pay a booking deposit for adhamfathalla.com" width="600" height="592" loading="lazy" decoding="async" />
           </picture>
         </a>
         <span class="qr-cap" data-i18n="qrCap">Or scan with any banking app</span>
@@ -829,6 +849,7 @@
         offerEmailLabel: "Your email",
         offerAmountLabel: "Your offer (USD)",
         offerBtn: "Send Offer",
+        trustEscrow: "Secure transfer via <b>Escrow.com</b>",
         email: "Email",
         call: "Call",
         depositTitle: "Serious? Reserve it with a deposit",
@@ -842,7 +863,7 @@
         faqQ3: "How do I buy it?",
         faqA3: "Contact the owner through WhatsApp, email, or phone to agree on a price. Once settled, the domain is transferred to you securely.",
         faqQ4: "How does the transfer work?",
-        faqA4: "After payment, the domain is pushed to your account at your registrar of choice. The transfer is fast and secure, usually within a day.",
+        faqA4: "The transfer can be handled securely through Escrow.com for buyer protection, or as a direct push to your registrar. Either way it's fast and secure, usually within a day.",
         faqQ5: "Can I reserve it with a deposit?",
         faqA5: "Yes — from Egypt you can reserve the domain with an InstaPay booking deposit. The amount is credited toward the final price.",
         switchLabel: "العربية",
@@ -859,6 +880,7 @@
         offerEmailLabel: "بريدك الإلكتروني",
         offerAmountLabel: "عرضك (بالدولار)",
         offerBtn: "أرسل العرض",
+        trustEscrow: "نقل آمن عبر <b>Escrow.com</b>",
         email: "البريد الإلكتروني",
         call: "اتصل",
         depositTitle: "مهتم بجدية؟ احجزه بعربون",
@@ -872,7 +894,7 @@
         faqQ3: "كيف أشتريه؟",
         faqA3: "تواصل مع المالك عبر واتساب أو البريد الإلكتروني أو الهاتف للاتفاق على السعر. بعد ذلك يُنقل النطاق إليك بشكل آمن.",
         faqQ4: "كيف تتم عملية النقل؟",
-        faqA4: "بعد الدفع، يُدفّع النطاق إلى حسابك لدى جهة التسجيل التي تختارها. النقل سريع وآمن، عادةً خلال يوم واحد.",
+        faqA4: "يمكن إتمام النقل بشكل آمن عبر Escrow.com لحماية المشتري، أو كدفعة مباشرة إلى جهة التسجيل لديك. في كلتا الحالتين يكون النقل سريعاً وآمناً، عادةً خلال يوم واحد.",
         faqQ5: "هل يمكنني حجزه بعربون؟",
         faqA5: "نعم — من داخل مصر يمكنك حجز النطاق بعربون حجز عبر إنستاباي. يُخصم المبلغ من السعر النهائي.",
         switchLabel: "English",
